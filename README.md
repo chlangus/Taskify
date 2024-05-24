@@ -8,7 +8,7 @@
 
 <br/>
 
-**[Taskify 바로가기](https://taskify-25mg.vercel.app/)**
+**[Taskify 바로가기](https://taskify-ruddy-five.vercel.app/)**
 
 **[팀 노션 바로가기](https://www.notion.so/PART3-TEAM_5-83801c49dafc417389957cf06d6c41d2)**
 
