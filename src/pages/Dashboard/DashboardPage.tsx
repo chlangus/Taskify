@@ -29,13 +29,16 @@ export default function Dashboard() {
       {showLeftButton && (
         <button
           onClick={() => scroll('left')}
-          className="w-[4rem] h-full absolute desktop:left-[30rem] tablet:left-[16rem] left-[6.7rem] bg-transparent hover:bg-violet_8 opacity-50"
+          className="z-10 w-[4rem] h-full absolute desktop:left-[30rem] tablet:left-[16rem] left-[6.7rem] bg-transparent hover:bg-violet_8 opacity-50"
         >
           <img src={backwardArrow} alt="왼쪽 화살표 아이콘" />
         </button>
       )}
 
-      <div ref={scrollContainerRef} className="flex overflow-auto">
+      <div
+        ref={scrollContainerRef}
+        className="flex flex-col overflow-auto desktop:flex-row"
+      >
         {data?.data?.map((column: ColumnData) => (
           <Column key={column.id} columnInfo={column} />
         ))}
@@ -45,7 +48,7 @@ export default function Dashboard() {
       {showRightButton && (
         <button
           onClick={() => scroll('right')}
-          className="w-[4rem] h-full bg-transparent absolute right-0 hover:bg-violet_8 opacity-50"
+          className="z-10 invisible desktop:visible w-[4rem] h-full bg-transparent absolute right-0 hover:bg-violet_8 opacity-50"
         >
           <img src={forwardArrow} alt="오른쪽 화살표 아이콘" />
         </button>

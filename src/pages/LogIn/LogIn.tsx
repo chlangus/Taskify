@@ -4,7 +4,7 @@ import TaskifyLogo from '../../components/LogIn/TaskifyLogo';
 
 export default function LogIn() {
   return (
-    <div className="flex flex-col justify-center items-center mt-[22.3rem]">
+    <div className="fixed inset-0 flex flex-col items-center justify-center">
       <Helmet>
         <title>Taskify 로그인</title>
       </Helmet>
