@@ -10,18 +10,12 @@ export default function useSwipe(data: any) {
       if (scrollContainerRef.current) {
         const { scrollLeft, scrollWidth, clientWidth } =
           scrollContainerRef.current;
+
         setShowLeftButton(scrollLeft > 0);
-        setShowRightButton(scrollLeft < scrollWidth - clientWidth);
+        setShowRightButton(scrollLeft <= scrollWidth - clientWidth);
       }
     };
-
-    const scrollContainer = scrollContainerRef.current;
-    scrollContainer?.addEventListener('scroll', checkScroll);
     checkScroll();
-
-    return () => {
-      scrollContainer?.removeEventListener('scroll', checkScroll);
-    };
   }, [data]);
 
   const scroll = (direction: any) => {
@@ -29,9 +23,9 @@ export default function useSwipe(data: any) {
       const { current } = scrollContainerRef;
       const scrollAmount = 500;
       if (direction === 'left') {
-        current.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        current.scrollTo({ left: -scrollAmount, behavior: 'smooth' });
       } else {
-        current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        current.scrollTo({ left: scrollAmount, behavior: 'smooth' });
       }
     }
   };

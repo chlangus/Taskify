@@ -19,7 +19,6 @@ export default function Dashboard() {
 
   const { scroll, scrollContainerRef, showLeftButton, showRightButton } =
     useSwipe(data);
-
   return (
     <main className="flex flex-col desktop:h-full desktop:flex-row">
       <Helmet>
@@ -37,7 +36,7 @@ export default function Dashboard() {
 
       <div
         ref={scrollContainerRef}
-        className="flex flex-col overflow-auto desktop:flex-row"
+        className="flex flex-col overflow-auto scrollbar-hide desktop:flex-row"
       >
         {data?.data?.map((column: ColumnData) => (
           <Column key={column.id} columnInfo={column} />
