@@ -5,20 +5,17 @@ export default function useSwipe(data: any) {
   const [showLeftButton, setShowLeftButton] = useState(false);
   const [showRightButton, setShowRightButton] = useState(true);
 
-  useEffect(() => {
-    const checkScroll = () => {
-      if (scrollContainerRef.current) {
-        const { scrollLeft, scrollWidth, clientWidth } =
-          scrollContainerRef.current;
+  const checkScroll = () => {
+    if (scrollContainerRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } =
+        scrollContainerRef.current;
 
-        setShowLeftButton(scrollLeft > 0);
-        setShowRightButton(scrollLeft <= scrollWidth - clientWidth);
-      }
-    };
-    checkScroll();
-  }, [data]);
+      setShowLeftButton(scrollLeft > 0);
+      setShowRightButton(scrollLeft <= scrollWidth - clientWidth);
+    }
+  };
 
-  const scroll = (direction: any) => {
+  const scroll = (direction: 'right' | 'left') => {
     if (scrollContainerRef.current) {
       const { current } = scrollContainerRef;
       const scrollAmount = 500;
@@ -28,6 +25,8 @@ export default function useSwipe(data: any) {
         current.scrollTo({ left: scrollAmount, behavior: 'smooth' });
       }
     }
+
+    checkScroll();
   };
 
   return { scroll, scrollContainerRef, showLeftButton, showRightButton };
